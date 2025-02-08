@@ -1,0 +1,28 @@
+clear all, close all, clc
+
+%A = [1 1 1 0 1;1 0 0 0 0;0 0 0 1 1;0 1 1 0 1;1 0 1 0 1];
+%plotroutine(A) 
+%A är våran matris som vi själva testade med
+
+load 'Puffer_IC-1 (1).mat'
+
+[M,N]= size(A);
+B = zeros(M+2, N+2); %Nollmatris
+B(2:end-1, 2:end-1) = A; %Vår matris med en ram av nollor
+
+gen= 3000
+
+for x = 1:gen
+    B2= zeros(M+2, N+2);
+    for i = (2:M+1)
+        for j = (2:N+1)
+            n = numneighbours(B,i,j);
+            B2(i,j)= celldestiny(B,i,j,n);
+        end
+    end
+
+   clf; 
+   spy(B(2:end-1,2:end-1));
+   pause(0.001);
+   B = B2;
+end 
