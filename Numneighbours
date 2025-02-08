@@ -1,0 +1,5 @@
+function n = numneighbours (A,i,j) % inparametrar för att indetifiera elementet A(i,j) grannar
+    [M,N] = size(A);
+    n= A(i,j+1) + A(i,j-1) + A(i+1,j) + A(i-1,j) + A(i-1,j-1) + A(i-1,j+1)+ A(i+1,j-1)+ A(i+1,j+1); 
+     %n motsvarar antalet grannar elementet har                                                                                                                                                                                                                                                                               
+end
